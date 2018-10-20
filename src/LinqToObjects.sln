@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinqToObjects", "LinqToObjects\LinqToObjects.csproj", "{A7D31149-3E47-4C7D-A208-51EEE1614459}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests", "UnitTests\UnitTests.csproj", "{6318AE80-BFB5-4028-A8C3-13F362677D78}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp", "ConsoleApp\ConsoleApp.csproj", "{0A0077F6-55A8-459E-BD09-19C493A90C8C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A7D31149-3E47-4C7D-A208-51EEE1614459}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A7D31149-3E47-4C7D-A208-51EEE1614459}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A7D31149-3E47-4C7D-A208-51EEE1614459}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A7D31149-3E47-4C7D-A208-51EEE1614459}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6318AE80-BFB5-4028-A8C3-13F362677D78}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6318AE80-BFB5-4028-A8C3-13F362677D78}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6318AE80-BFB5-4028-A8C3-13F362677D78}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6318AE80-BFB5-4028-A8C3-13F362677D78}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0A0077F6-55A8-459E-BD09-19C493A90C8C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A0077F6-55A8-459E-BD09-19C493A90C8C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A0077F6-55A8-459E-BD09-19C493A90C8C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A0077F6-55A8-459E-BD09-19C493A90C8C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
