@@ -39,7 +39,7 @@ namespace UnitTests
         [Test]
         public void ExecutionIsDeferred()
         {
-            //ThrowingEnumerable.AssertDeferred<int>(src => src.Where(x => x > 0));
+            ThrowingEnumerable.AssertDeferred<int>(src => src.Where(x => x > 0));
         }
     }
 }
