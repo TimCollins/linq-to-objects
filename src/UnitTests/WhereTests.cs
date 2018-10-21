@@ -1,5 +1,7 @@
-﻿using NUnit.Framework;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using NUnit.Framework;
 
 namespace UnitTests
 {
@@ -14,6 +16,23 @@ namespace UnitTests
             var result = source.Where(x => x < 4);
 
             Assert.AreEqual(result, new int[] { 1, 3, 2, 1 });
+        }
+
+        [Test]
+        public void NullSourceThrowsNullArgumentException()
+        {
+            IEnumerable<int> source = null;
+
+            Assert.Throws<ArgumentNullException>(() => source.Where(x => x > 5));
+        }
+
+        [Test]
+        public void NullPredicateThrowsNullArgumentException()
+        {
+            int[] source = { 1, 3, 7, 9, 10 };
+            Func<int, bool> predicate = null;
+
+            Assert.Throws<ArgumentNullException>(() => source.Where(predicate));
         }
     }
 }
