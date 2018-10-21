@@ -24,7 +24,10 @@ namespace LinqToObjects
         {
             foreach (TSource item in source)
             {
-                yield return item;
+                if (predicate(item))
+                {
+                    yield return item;
+                }
             }
         }
     }

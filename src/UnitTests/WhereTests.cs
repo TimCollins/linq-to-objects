@@ -16,7 +16,7 @@ namespace UnitTests
 
             var result = source.Where(x => x < 4);
 
-            Assert.AreEqual(result, new int[] { 1, 3, 2, 1 });
+            result.AssertSequenceEqual(1, 3, 2, 1);
         }
 
         [Test]
