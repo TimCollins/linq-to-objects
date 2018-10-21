@@ -61,6 +61,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ThrowingEnumerable.cs" />
     <Compile Include="WhereTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

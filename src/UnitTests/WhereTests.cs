@@ -34,5 +34,11 @@ namespace UnitTests
 
             Assert.Throws<ArgumentNullException>(() => source.Where(predicate));
         }
+
+        [Test]
+        public void ExecutionIsDeferred()
+        {
+            //ThrowingEnumerable.AssertDeferred<int>(src => src.Where(x => x > 0));
+        }
     }
 }
