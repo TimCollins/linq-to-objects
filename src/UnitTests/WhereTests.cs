@@ -41,5 +41,16 @@ namespace UnitTests
         {
             ThrowingEnumerable.AssertDeferred<int>(src => src.Where(x => x > 0));
         }
+
+        [Test]
+        public void SimpleFilteringWithQueryExpression()
+        {
+            int[] source = { 1, 3, 4, 2, 8, 1 };
+            var result = from i in source
+                         where i < 4
+                         select i;
+
+            result.AssertSequenceEqual(1, 3, 2, 1);
+        }
     }
 }
