@@ -27,6 +27,8 @@ namespace UnitTests
             Assert.Throws<ArgumentNullException>(() => source.Select(projection));
         }
 
+        // 2 x Index tests
+
         [Test]
         public void SimpleProjectionToDifferentType()
         {
@@ -56,5 +58,34 @@ namespace UnitTests
 
             result.AssertSequenceEqual(2, 10, 4);
         }
+
+        [Test]
+        public void SimpleProjectionWithQueryExpression()
+        {
+            int[] source = { 1, 5, 2 };
+            var result = from s in source
+                         select s * 2;
+
+            result.AssertSequenceEqual(2, 10, 4);
+        }
+
+        [Test]
+        public void EmptySource()
+        {
+            int[] source = new int[0];
+            var result = source.Select(s => s * 2);
+
+            result.AssertSequenceEqual();
+        }
+
+        [Test]
+        public void ExecutionIsDeferred()
+        {
+            ThrowingEnumerable.AssertDeferred(src => src.Select(x => x * 2));
+        }
+
+        // 3 x WithIndex tests
+
+
     }
 }
