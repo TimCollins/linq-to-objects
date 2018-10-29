@@ -194,3 +194,6 @@ FakesAssemblies/
 
 # Visual Studio 6 workspace options file
 *.opt
+
+src/UnitTests/coverage
+src/UnitTests/results.xml
