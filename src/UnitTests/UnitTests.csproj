@@ -68,6 +68,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="GenerateCoverage.bat" />
+    <None Include="GenerateResults.bat" />
+    <None Include="GenerateTestResults.bat" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
