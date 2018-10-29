@@ -10,7 +10,21 @@ namespace LinqToObjects
         // Takes a delegate which takes a TSource element and returns a TResult element
         public static IEnumerable<TResult> Select<TSource, TResult>(this IEnumerable<TSource> source, Func<TSource, TResult> selector)
         {
+            if (source == null)
+            {
+                throw new ArgumentNullException("source cannot be null");
+            }
 
+            if (selector == null)
+            {
+                throw new ArgumentNullException("selector cannot be null");
+            }
+
+            return SelectImpl(source, selector);
+        }
+
+        private static IEnumerable<TResult> SelectImpl<TSource, TResult>(IEnumerable<TSource> source, Func<TSource, TResult> selector)
+        {
             return null;
         }
     }
