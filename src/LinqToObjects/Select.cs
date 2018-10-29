@@ -25,7 +25,10 @@ namespace LinqToObjects
 
         private static IEnumerable<TResult> SelectImpl<TSource, TResult>(IEnumerable<TSource> source, Func<TSource, TResult> selector)
         {
-            return null;
+            foreach (var s in source)
+            {
+                yield return selector(s);
+            }
         }
     }
 }
