@@ -1,11 +1,32 @@
 ﻿using NUnit.Framework;
-using System.Linq;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using LinqToObjects;
+//using System.Linq;
 
 namespace UnitTests
 {
     [TestFixture]
     public class SelectTests
     {
+        [Test]
+        public void NullSourceThrowsNullArgumentException()
+        {
+            IEnumerable<int> source = null;
+
+            Assert.Throws<ArgumentNullException>(() => source.Select(s => s + 1));
+        }
+
+        [Test]
+        public void NullProjectionThrowsArgumentNullException()
+        {
+            int[] source = { 1, 3, 7, 9, 10 };
+            Func<int, int> projection = null;
+
+            Assert.Throws<ArgumentNullException>(() => source.Select(projection));
+        }
+
         [Test]
         public void SimpleProjectionToDifferentType()
         {
