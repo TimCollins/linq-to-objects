@@ -30,5 +30,31 @@ namespace LinqToObjects
                 yield return selector(s);
             }
         }
+
+        // Here the delegate takes a second int parameter representing the element index
+        public static IEnumerable<TResult> Select<TSource, TResult>(this IEnumerable<TSource> source, Func<TSource, int, TResult> selector)
+        {
+            if (source == null)
+            {
+                throw new ArgumentNullException("source cannot be null");
+            }
+
+            if (selector == null)
+            {
+                throw new ArgumentNullException("selector cannot be null");
+            }
+
+            return SelectImpl(source, selector);
+        }
+
+        private static IEnumerable<TResult> SelectImpl<TSource, TResult>(IEnumerable<TSource> source, Func<TSource, int, TResult> selector)
+        {
+            var index = 0;
+            foreach (var s in source)
+            {
+                yield return selector(s, index);
+                index++;
+            }
+        }
     }
 }
