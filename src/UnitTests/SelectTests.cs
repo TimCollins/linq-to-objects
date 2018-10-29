@@ -27,7 +27,22 @@ namespace UnitTests
             Assert.Throws<ArgumentNullException>(() => source.Select(projection));
         }
 
-        // 2 x Index tests
+        [Test]
+        public void WithIndexNullSourceThrowsNullArgumentException()
+        {
+            IEnumerable<int> source = null;
+
+            Assert.Throws<ArgumentNullException>(() => source.Select((s, index) => s + index));
+        }
+
+        [Test]
+        public void WithIndexNullPredicateThrowsNullArgumentException()
+        {
+            int[] source = { 1, 3, 7, 9, 10 };
+            Func<int, int, int> projection = null;
+
+            Assert.Throws<ArgumentNullException>(() => source.Select(projection));
+        }
 
         [Test]
         public void SimpleProjectionToDifferentType()
@@ -84,8 +99,28 @@ namespace UnitTests
             ThrowingEnumerable.AssertDeferred(src => src.Select(x => x * 2));
         }
 
-        // 3 x WithIndex tests
+        [Test]
+        public void WithIndexSimpleProjection()
+        {
+            int[] source = { 1, 5, 2 };
 
+            var result = source.Select((s, index) => s + index * 10);
+            result.AssertSequenceEqual(1, 15, 22);
+        }
 
+        [Test]
+        public void WithIndexEmptySource()
+        {
+            int[] source = new int[0];
+
+            var result = source.Select((s, index) => s + index);
+            result.AssertSequenceEqual();
+        }
+
+        [Test]
+        public void WithIndexExecutionIsDeferred()
+        {
+            ThrowingEnumerable.AssertDeferred(src => src.Select((s, index) => s + index));
+        }
     }
 }
