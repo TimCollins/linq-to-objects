@@ -71,6 +71,24 @@ namespace UnitTests
         }
 
         [Test]
+        public void WithIndexNullSourceThrowsNullArgumentException()
+        {
+            IEnumerable<int> source = null;
+
+            Assert.Throws<ArgumentNullException>(() => source.Where((x, index) => index > 5));
+        }
+
+        [Test]
+        public void WithIndexNullPredicateThrowsNullArgumentException()
+        {
+            int[] source = { 1, 3, 7, 9, 10 };
+            Func<int, int, bool> predicate = null;
+
+            Assert.Throws<ArgumentNullException>(() => source.Where(predicate));
+        }
+
+
+        [Test]
         public void WithIndexEmptySource()
         {
             int[] source = new int[0];
