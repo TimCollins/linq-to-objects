@@ -1,0 +1,1 @@
+..\packages\NUnit.Runners.2.6.4\tools\nunit-console.exe .\bin\Debug\UnitTests.dll .\bin\Debug\LinqToObjects.dll /noshadow
