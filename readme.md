@@ -5,6 +5,7 @@
 - [Code coverage](#code-coverage) - Code coverage
 - [Where](#where) - The Where method
 - [Select](#select) - The Select method
+- [Range](#range) - The Range method
 
 ___
 ### **Introduction**
@@ -19,6 +20,8 @@ The general approach is:
 The implementation of each method is contained in one class which will be split into separate files with each operator's methods defined in a partial class.
 
 VS2015 seems to be awkward for running tests in the absence of ReSharper so I've fallen back to using the GUI with NUnit 2.8.4.
+
+To debug unit tests with the NUnit Test Runner, from within Visual Studo: choose `Debug` -> `Attach to Process...` and select `nunit-agent.exe` from the list. Then stick a breakpoint in a unit test and hit F5 from within the test runner. The Visual Studio debugger should take over once the breakpoint is hit.
 
 ___
 ### **Code coverage**
@@ -125,3 +128,13 @@ Select<TSource, TResult>(IEnumerable<TSource>, Func<TSource, TResult>)
 ```
 The selector delegate is applied to each input element in turn to yield an output element.
 The tests for `Select` are similar to `Where` except the filtering has now become projecting.
+
+### **Range**
+The MSDN reference is [here](https://docs.microsoft.com/en-us/dotnet/api/system.linq.enumerable.range)
+There is only one method signature:
+```csharp
+// Return an object which can be iterated over. The object will contain "count" integers starting at "start"
+public static IEnumerable<int> Range (int start, int count);
+```
+In this case it's just a static method, not an extension method.
+Input can't be streamed or buffered. Another important implementation point is that it should be a low-overhead method. An array of "count" elements should not be generated and returned for example. Instead values should be yield returned (lazily).
