@@ -33,7 +33,7 @@ namespace LinqToObjects
             for (var i = 0; i < count; i++)
             {
                 yield return start + i;
-            }   
+            }
         }
     }
 }
