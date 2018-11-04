@@ -6,6 +6,7 @@
 - [Where](#where) - The Where method
 - [Select](#select) - The Select method
 - [Range](#range) - The Range method
+- [Empty](#empty) - The Empty method
 
 ___
 ### **Introduction**
@@ -138,3 +139,13 @@ public static IEnumerable<int> Range (int start, int count);
 ```
 In this case it's just a static method, not an extension method.
 Input can't be streamed or buffered. Another important implementation point is that it should be a low-overhead method. An array of "count" elements should not be generated and returned for example. Instead values should be yield returned (lazily).
+___
+### **Empty**
+The MSDN reference is [here](https://docs.microsoft.com/en-us/dotnet/api/system.linq.enumerable.empty)
+It has one overload. The method signature is:
+```csharp
+public static System.Collections.Generic.IEnumerable<TResult> Empty<TResult> ();
+```
+This function returns an empty sequence of the specified type.
+
+The [post](https://codeblog.jonskeet.uk/2010/12/24/reimplementing-linq-to-objects-part-5-empty/) mentions caching and provides a different implementation but there is no test to cover that scenario.
