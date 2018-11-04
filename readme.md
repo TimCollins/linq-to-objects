@@ -2,11 +2,12 @@
 
 ### Table of Contents
 - [Introduction](#introduction) - Introduction
-- [Code coverage](#code-coverage) - Code coverage
+- [Code Coverage](#code-coverage) - Code coverage details
 - [Where](#where) - The Where method
 - [Select](#select) - The Select method
 - [Range](#range) - The Range method
 - [Empty](#empty) - The Empty method
+- [Repeat](#repeat) - The Repeat method
 
 ___
 ### **Introduction**
@@ -149,3 +150,11 @@ public static System.Collections.Generic.IEnumerable<TResult> Empty<TResult> ();
 This function returns an empty sequence of the specified type.
 
 The [post](https://codeblog.jonskeet.uk/2010/12/24/reimplementing-linq-to-objects-part-5-empty/) mentions caching and provides a different implementation but there is no test to cover that scenario.
+___
+### **Repeat**
+The MSDN reference is [here](https://docs.microsoft.com/en-us/dotnet/api/system.linq.enumerable.repeat)
+It has one overload. The method signature is:
+```csharp
+public static IEnumerable<TResult> Repeat<TResult> (TResult element, int count);
+```
+This function returns a sequence which contains the specified element repeated a specified number of times.
