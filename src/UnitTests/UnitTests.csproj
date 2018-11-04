@@ -63,6 +63,7 @@
   <ItemGroup>
     <Compile Include="EmptyTests.cs" />
     <Compile Include="RangeTests.cs" />
+    <Compile Include="RepeatTests.cs" />
     <Compile Include="SelectTests.cs" />
     <Compile Include="TestExtensions.cs" />
     <Compile Include="ThrowingEnumerable.cs" />
