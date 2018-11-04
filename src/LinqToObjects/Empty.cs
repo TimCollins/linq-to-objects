@@ -6,7 +6,8 @@ namespace LinqToObjects
     {
         public static IEnumerable<TResult> Empty<TResult>()
         {
-            yield return default(TResult);
+            yield break;
+            //yield return default(TResult);
         }
     }
 }
