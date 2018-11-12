@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 
 namespace LinqToObjects
@@ -14,9 +15,21 @@ namespace LinqToObjects
 
             var count = 0;
 
-            foreach (T item in input)
+            if (TryFastCount(input, out count))
             {
-                count++;
+                return count;
+            }
+
+            // Do it the slow way making sure to overflow appropriately.
+            checked
+            {
+                using (var iterator = input.GetEnumerator())
+                {
+                    while (iterator.MoveNext())
+                    {
+                        count++;
+                    }
+                }
             }
 
             return count;
@@ -30,16 +43,42 @@ namespace LinqToObjects
             }
 
             var count = 0;
-
-            foreach (T item in input)
+            checked
             {
-                if (predicate(item))
+                foreach (T item in input)
                 {
-                    count++;
+                    if (predicate(item))
+                    {
+                        count++;
+                    }
                 }
             }
 
             return count;
+        }
+
+        private static bool TryFastCount<TSource>(IEnumerable<TSource> source, out int count)
+        {
+            // Optimisation for ICollection<T>
+            ICollection<TSource> genericCollection = source as ICollection<TSource>;
+
+            if (genericCollection != null)
+            {
+                count = genericCollection.Count;
+                return true;
+            }
+
+            // Optimisation for ICollection
+            var nonGenericCollection = source as ICollection;
+
+            if (nonGenericCollection != null)
+            {
+                count = nonGenericCollection.Count;
+                return true;
+            }
+
+            count = 0;
+            return false;
         }
     }
 }
