@@ -18,14 +18,14 @@ namespace LinqToObjects
             return count;
         }
 
-        public static int Count<T>(this IEnumerable<T> input, Func<int, bool> predicate)
+        public static int Count<T>(this IEnumerable<T> input, Func<T, bool> predicate)
         {
             var count = 0;
             var enumerator = input.GetEnumerator();
 
             while (enumerator.MoveNext())
             {
-                if (predicate(Convert.ToInt32(enumerator.Current)))
+                if (predicate(enumerator.Current))
                 {
                     count++;
                 }
