@@ -21,11 +21,9 @@ namespace LinqToObjects
         public static int Count<T>(this IEnumerable<T> input, Func<T, bool> predicate)
         {
             var count = 0;
-            var enumerator = input.GetEnumerator();
-
-            while (enumerator.MoveNext())
+            foreach (T item in input)
             {
-                if (predicate(enumerator.Current))
+                if (predicate(item))
                 {
                     count++;
                 }
