@@ -61,11 +61,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CountTests.cs" />
     <Compile Include="EmptyTests.cs" />
     <Compile Include="RangeTests.cs" />
     <Compile Include="RepeatTests.cs" />
     <Compile Include="SelectTests.cs" />
     <Compile Include="TestExtensions.cs" />
+    <Compile Include="TestSupport\GenericOnlyCollection.cs" />
     <Compile Include="ThrowingEnumerable.cs" />
     <Compile Include="WhereTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
