@@ -68,6 +68,7 @@
     <Compile Include="SelectTests.cs" />
     <Compile Include="TestExtensions.cs" />
     <Compile Include="TestSupport\GenericOnlyCollection.cs" />
+    <Compile Include="TestSupport\SemiGenericCollection.cs" />
     <Compile Include="ThrowingEnumerable.cs" />
     <Compile Include="WhereTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

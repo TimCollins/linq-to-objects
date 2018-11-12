@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using UnitTests.TestSupport;
 
 namespace LinqToObjects
 {
@@ -49,6 +50,24 @@ namespace LinqToObjects
             int[] input = null;
 
             Assert.Throws<ArgumentNullException>(() => input.Count(i => i % 2 == 0));
+        }
+
+        [Test]
+        public void GenericOnlyCollectionCount()
+        {
+            Assert.AreEqual(5, new GenericOnlyCollection<int>(Enumerable.Range(2, 5)).Count());
+        }
+
+        [Test]
+        public void SemiGenericCollectionCount()
+        {
+            Assert.AreEqual(5, new SemiGenericCollection(Enumerable.Range(2, 5)).Count());
+        }
+
+        [Test]
+        public void RegularGenericCollectionCount()
+        {
+            Assert.AreEqual(5, new List<int>(Enumerable.Range(2, 5)).Count());
         }
     }
 }
