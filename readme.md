@@ -8,6 +8,7 @@
 - [Range](#range) - The Range method
 - [Empty](#empty) - The Empty method
 - [Repeat](#repeat) - The Repeat method
+- [Count](#count) - The Count method
 
 ___
 ### **Introduction**
@@ -158,3 +159,25 @@ It has one overload. The method signature is:
 public static IEnumerable<TResult> Repeat<TResult> (TResult element, int count);
 ```
 This function returns a sequence which contains the specified element repeated a specified number of times.
+___
+### **Count**
+The MSDN reference is [here](https://docs.microsoft.com/en-us/dotnet/api/system.linq.enumerable.count)
+It has two overloads. The method signature is:
+```csharp
+// Returns the number of elements in the sequence
+public static int Count<TSource> (this System.Collections.Generic.IEnumerable<TSource> source);
+// Returns the number of elements in the sequence that satisfy the specified condition
+public static int Count<TSource>(this IEnumerable<TSource> source, Func<TSource, bool> predicate);
+```
+There is no deferred execution here.
+The tests should verify two things. A count with a predicate and a count without a predicate. The article also discusses the following:
+* A source which implements both ICollection<T> and ICollection (easy: use List<T>)
+* A source which implements ICollection<T> but not ICollection (reasonably easy, after a little work finding a suitable type: use HashSet<T>)
+* A source which implements ICollection but not ICollection<T> but still implements IEnumerable<T> (so that we can extend it) – tricky…
+* A source which doesn’t implement ICollection or ICollection<T> (easy: use Enumerable.Range which we’ve already implemented)
+
+The sources are:
+* List<T>
+* HashSet<T>
+* See the UnitTests.TestSupport.SemiGenericCollection class
+* Enumerable.Range()
