@@ -7,10 +7,14 @@ namespace LinqToObjects
     {
         public static int Count<T>(this IEnumerable<T> input)
         {
-            var count = 0;
-            var enumerator = input.GetEnumerator();
+            if (input == null)
+            {
+                throw new ArgumentNullException("input cannot be null");
+            }
 
-            while (enumerator.MoveNext())
+            var count = 0;
+
+            foreach (T item in input)
             {
                 count++;
             }
@@ -20,7 +24,13 @@ namespace LinqToObjects
 
         public static int Count<T>(this IEnumerable<T> input, Func<T, bool> predicate)
         {
+            if (input == null)
+            {
+                throw new ArgumentNullException("input cannot be null");
+            }
+
             var count = 0;
+
             foreach (T item in input)
             {
                 if (predicate(item))
