@@ -9,6 +9,7 @@
 - [Empty](#empty) - The Empty method
 - [Repeat](#repeat) - The Repeat method
 - [Count](#count) - The Count method
+- [Concat](#concat) - The Concat method
 
 ___
 ### **Introduction**
@@ -181,3 +182,12 @@ The sources are:
 * HashSet<T>
 * See the UnitTests.TestSupport.SemiGenericCollection class
 * Enumerable.Range()
+___
+### **Concat**
+The MSDN reference is [here](https://docs.microsoft.com/en-us/dotnet/api/system.linq.enumerable.concat). It has one overload. The method signature is:
+
+```csharp
+// Concatenates two sequences
+IEnumerable<TSource> Concat<TSource>(this IEnumerable<TSource> first, IEnumerable<TSource> second)
+```
+The concatenation just returns all of the items in the first collection and then all of the items in the second one.
