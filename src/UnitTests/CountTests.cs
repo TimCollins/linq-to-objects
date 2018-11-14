@@ -1,10 +1,11 @@
-﻿using NUnit.Framework;
+﻿using LinqToObjects;
+using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 //using System.Linq;
 using UnitTests.TestSupport;
 
-namespace LinqToObjects
+namespace UnitTests
 {
     [TestFixture]
     public class CountTests
