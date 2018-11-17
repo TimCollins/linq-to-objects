@@ -11,7 +11,7 @@
 - [Count](#count) - The Count method
 - [Concat](#concat) - The Concat method
 - [SelectMany](#selectmany) - The SelectMany method
-
+- [Any](#any) - The Any method
 ___
 ### **Introduction**
 See [here](https://codeblog.jonskeet.uk/category/edulinq/) for source article.
@@ -210,3 +210,14 @@ SelectMany<TSource,TResult>(IEnumerable<TSource>, Func<TSource,Int32,IEnumerable
 In each case, a subsequence is generated from each element of the input sequence using a delegate which can optionally take a parameter with the index of the element within the original collection.
 
 Each element from each subsequence is returned directly or another delegate is applied which takes the original element in the input sequence and the element within the subsequence.
+
+___
+### **Any**
+Determines whether any element of a sequence exists or satisfies a condition. The MSDN reference is [here](https://docs.microsoft.com/en-us/dotnet/api/system.linq.enumerable.any). It has two overloads
+```csharp
+// Determine whether the given sequence contains any elements 
+bool Any<TSource> (this IEnumerable<TSource> source);
+// Determine whether the given sequence contains any elements that match the specified predicate
+bool Any<TSource> (this IEnumerable<TSource> source, Func<TSource,bool> predicate);
+```
+It uses immediate execution so the validation and implementation blocks don't have to be separated.
