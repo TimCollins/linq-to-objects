@@ -1,6 +1,7 @@
-﻿using NUnit.Framework;
+﻿using LinqToObjects;
+using NUnit.Framework;
 using System;
-using System.Linq;
+//using System.Linq;
 
 namespace UnitTests
 {
@@ -67,6 +68,8 @@ namespace UnitTests
         [Test]
         public void SequenceIsNotEvaluatedAfterFirstMatch()
         {
+            // Why no divide by zero error?
+            // Check this in LINQPad maybe?
             int[] source = { 10, 2, 0, 3 };
             var query = source.Select(n => 10 / n);
 
