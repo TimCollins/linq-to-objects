@@ -10,6 +10,7 @@
 - [Repeat](#repeat) - The Repeat method
 - [Count](#count) - The Count method
 - [Concat](#concat) - The Concat method
+- [SelectMany](#selectmany) - The SelectMany method
 
 ___
 ### **Introduction**
@@ -191,3 +192,21 @@ The MSDN reference is [here](https://docs.microsoft.com/en-us/dotnet/api/system.
 IEnumerable<TSource> Concat<TSource>(this IEnumerable<TSource> first, IEnumerable<TSource> second)
 ```
 The concatenation just returns all of the items in the first collection and then all of the items in the second one.
+
+___
+### **SelectMany**
+The article refers to this as the most important operator in the whole of LINQ. Most other operators that returns sequences can be implemented via SelectMany. The MSDN reference is [here](https://docs.microsoft.com/en-us/dotnet/api/system.linq.enumerable.selectmany). It has four overloads. The method signatures are:
+
+```csharp
+// Projects each element of a sequence to an IEnumerable<T>, flattens the resulting sequences into one sequence, and invokes a result selector function on each element therein.
+SelectMany<TSource,TCollection,TResult>(IEnumerable<TSource>, Func<TSource,IEnumerable<TCollection>>, Func<TSource,TCollection,TResult>)
+// Projects each element of a sequence to an IEnumerable<T>, flattens the resulting sequences into one sequence, and invokes a result selector function on each element therein. The index of each source element is used in the intermediate projected form of that element.
+SelectMany<TSource,TCollection,TResult>(IEnumerable<TSource>, Func<TSource,Int32,IEnumerable<TCollection>>, Func<TSource,TCollection,TResult>)
+// Projects each element of a sequence to an IEnumerable<T> and flattens the resulting sequences into one sequence.
+SelectMany<TSource,TResult>(IEnumerable<TSource>, Func<TSource,IEnumerable<TResult>>)
+// Projects each element of a sequence to an IEnumerable<T>, and flattens the resulting sequences into one sequence. The index of each source element is used in the projected form of that element.
+SelectMany<TSource,TResult>(IEnumerable<TSource>, Func<TSource,Int32,IEnumerable<TResult>>)
+```
+In each case, a subsequence is generated from each element of the input sequence using a delegate which can optionally take a parameter with the index of the element within the original collection.
+
+Each element from each subsequence is returned directly or another delegate is applied which takes the original element in the input sequence and the element within the subsequence.
