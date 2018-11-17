@@ -12,21 +12,9 @@ namespace LinqToObjects
                 throw new ArgumentNullException("source");
             }
 
-            return AnyImpl(source);
-        }
+            var iterator = source.GetEnumerator();
 
-        private static bool AnyImpl<TSource>(IEnumerable<TSource> source)
-        {
-            var count = 0;
-            using (var iterator = source.GetEnumerator())
-            {
-                while (iterator.MoveNext())
-                {
-                    count++;
-                }
-            }
-
-            return count > 0;
+            return iterator.MoveNext();
         }
 
         public static bool Any<TSource>(this IEnumerable<TSource> source, Func<TSource, bool> predicate)
