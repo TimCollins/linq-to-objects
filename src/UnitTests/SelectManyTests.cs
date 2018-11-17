@@ -1,7 +1,8 @@
 ﻿using NUnit.Framework;
 using System;
 using System.Collections.Generic;
-using System.Linq;
+using LinqToObjects;
+//using System.Linq;
 
 namespace UnitTests
 {
@@ -75,5 +76,15 @@ namespace UnitTests
 
             Assert.Throws<ArgumentNullException>(() => numbers.SelectMany((n, index) => (n + index).ToString().ToCharArray()));
         }
+
+        [Test]
+        public void ValidateNullSelectorWithIndex()
+        {
+            int[] numbers = { 3, 5, 20, 15 };
+            Func<int, IEnumerable<int>> projection = null;
+
+            Assert.Throws<ArgumentNullException>(() => numbers.SelectMany(projection));
+        }
+
     }
 }
