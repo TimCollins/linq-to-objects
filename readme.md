@@ -12,6 +12,7 @@
 - [Concat](#concat) - The Concat method
 - [SelectMany](#selectmany) - The SelectMany method
 - [Any](#any) - The Any method
+- [All](#all) - The All method
 ___
 ### **Introduction**
 See [here](https://codeblog.jonskeet.uk/category/edulinq/) for source article.
@@ -219,5 +220,14 @@ Determines whether any element of a sequence exists or satisfies a condition. Th
 bool Any<TSource> (this IEnumerable<TSource> source);
 // Determine whether the given sequence contains any elements that match the specified predicate
 bool Any<TSource> (this IEnumerable<TSource> source, Func<TSource,bool> predicate);
+```
+It uses immediate execution so the validation and implementation blocks don't have to be separated.
+
+___
+### **All**
+Determines whether all elements of a sequence satisfy a condition. The MSDN reference is [here](https://docs.microsoft.com/en-us/dotnet/api/system.linq.enumerable.all). It has one overload
+```csharp
+// Determine whether the given sequence contains any elements 
+bool All<TSource> (this IEnumerable<TSource> source, Func<TSource,bool> predicate);
 ```
 It uses immediate execution so the validation and implementation blocks don't have to be separated.
