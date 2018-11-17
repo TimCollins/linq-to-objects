@@ -61,6 +61,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AnyTests.cs" />
     <Compile Include="ConcatTests.cs" />
     <Compile Include="CountTests.cs" />
     <Compile Include="EmptyTests.cs" />
