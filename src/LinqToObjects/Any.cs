@@ -29,24 +29,15 @@ namespace LinqToObjects
                 throw new ArgumentNullException("predicate");
             }
 
-            return AnyImpl(source, predicate);
-        }
-
-        private static bool AnyImpl<TSource>(IEnumerable<TSource> source, Func<TSource, bool> predicate)
-        {
-            var count = 0;
-            using (var iterator = source.GetEnumerator())
+            foreach (TSource item in source)
             {
-                while (iterator.MoveNext())
+                if (predicate(item))
                 {
-                    if (predicate(iterator.Current))
-                    {
-                        count++;
-                    }
+                    return true;
                 }
             }
 
-            return count > 0;
+            return false;
         }
     }
 }
