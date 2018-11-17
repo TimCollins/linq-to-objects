@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="All.cs" />
     <Compile Include="Any.cs" />
     <Compile Include="Concat.cs" />
     <Compile Include="Count.cs" />
