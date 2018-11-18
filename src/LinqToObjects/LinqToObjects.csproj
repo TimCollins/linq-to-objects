@@ -47,6 +47,7 @@
     <Compile Include="Empty.cs" />
     <Compile Include="First.cs" />
     <Compile Include="FirstOrDefault.cs" />
+    <Compile Include="Last.cs" />
     <Compile Include="Range.cs" />
     <Compile Include="Repeat.cs" />
     <Compile Include="Select.cs" />
