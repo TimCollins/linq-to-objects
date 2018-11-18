@@ -68,6 +68,7 @@
     <Compile Include="EmptyTests.cs" />
     <Compile Include="FirstOrDefaultTests.cs" />
     <Compile Include="FirstTests.cs" />
+    <Compile Include="LastTests.cs" />
     <Compile Include="RangeTests.cs" />
     <Compile Include="RepeatTests.cs" />
     <Compile Include="SelectManyTests.cs" />
