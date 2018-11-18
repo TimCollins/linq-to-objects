@@ -12,7 +12,14 @@ namespace LinqToObjects
                 throw new ArgumentNullException("source");
             }
 
-            return default(TSource);
+            var iterator = source.GetEnumerator();
+
+            if (!iterator.MoveNext())
+            {
+                throw new InvalidOperationException("source");
+            }
+
+            return iterator.Current;
         }
 
         public static TSource First<TSource>(this IEnumerable<TSource> source, Func<TSource, bool> predicate)
@@ -22,7 +29,27 @@ namespace LinqToObjects
                 throw new ArgumentNullException("source");
             }
 
-            return default(TSource);
+            if (predicate == null)
+            {
+                throw new ArgumentNullException("predicate");
+            }
+
+            var iterator = source.GetEnumerator();
+
+            if (!iterator.MoveNext())
+            {
+                throw new InvalidOperationException("source");
+            }
+
+            foreach (TSource item in source)
+            {
+                if (predicate(item))
+                {
+                    return item;
+                }
+            }
+
+            throw new InvalidOperationException("no match found");
         }
     }
 }
