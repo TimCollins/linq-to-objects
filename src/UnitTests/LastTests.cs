@@ -1,6 +1,7 @@
 ﻿using NUnit.Framework;
 using System;
 using System.Linq;
+using UnitTests.TestSupport;
 
 namespace UnitTests
 {
@@ -101,6 +102,22 @@ namespace UnitTests
             int[] source = { 1, 2, 3, 4, 8, 16 };
 
             Assert.AreEqual(16, source.Last(n => n > 3));
+        }
+
+        [Test]
+        public void ListWithoutPredicateDoesNotIterate()
+        {
+            var source = new NonEnumerableList<int>(1, 5, 10, 3);
+
+            Assert.AreEqual(3, source.Last());
+        }
+
+        [Test]
+        public void ListWithPredicateStillIterates()
+        {
+            var source = new NonEnumerableList<int>(1, 5, 10, 3);
+
+            Assert.Throws<NotSupportedException>(() => source.Last(n => n > 3));
         }
     }
 }
