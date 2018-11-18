@@ -90,6 +90,38 @@ namespace UnitTests
             Assert.Throws<InvalidOperationException>(() => source.First(n => n > 10));
         }
 
+        [Test]
+        public void MultipleElementSequenceWithSinglePredicateMatch()
+        {
+            int[] source = { 1, 2, 3, 4 };
 
+            Assert.AreEqual(4, source.First(n => n > 3));
+        }
+
+        [Test]
+        public void MultipleElementSequenceWithMultiplePredicateMatches()
+        {
+            int[] source = { 1, 2, 3, 4, 8, 16 };
+
+            Assert.AreEqual(4, source.First(n => n > 3));
+        }
+
+        [Test]
+        public void EarlyOutAfterFirstElementWithoutPredicate()
+        {
+            int[] source = { 15, 1, 0, 3 };
+            var query = source.Select(n => 10 / n);
+
+            Assert.AreEqual(0, query.First());
+        }
+
+        [Test]
+        public void EarlyOutAfterFirstElementWithPredicate()
+        {
+            int[] source = { 15, 1, 0, 3 };
+            var query = source.Select(n => 10 / n);
+
+            Assert.AreEqual(10, query.First(n => n > 5));
+        }
     }
 }
