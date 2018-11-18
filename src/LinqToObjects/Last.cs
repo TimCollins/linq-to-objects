@@ -18,8 +18,7 @@ namespace LinqToObjects
             {
                 throw new InvalidOperationException("source");
             }
-
-
+            
             return list[list.Count - 1];
         }
 
@@ -42,16 +41,24 @@ namespace LinqToObjects
                 throw new InvalidOperationException("source");
             }
 
-            for (var i = list.Count - 1; i >= 0; i--)
+            var foundAny = false;
+            var last = default(TSource);
+
+            foreach (TSource item in source)
             {
-                var item = list[i];
-                if (predicate(list[i]))
+                if (predicate(item))
                 {
-                    return item;
+                    foundAny = true;
+                    last = item;
                 }
             }
 
-            throw new InvalidOperationException("source");
+            if (!foundAny)
+            {
+                throw new InvalidOperationException("No items matched the predicate");
+            }
+
+            return last;
         }
     }
 }
