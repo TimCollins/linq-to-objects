@@ -1,6 +1,7 @@
-﻿using NUnit.Framework;
+﻿using LinqToObjects;
+using NUnit.Framework;
 using System;
-using System.Linq;
+//using System.Linq;
 using UnitTests.TestSupport;
 
 namespace UnitTests
@@ -65,7 +66,7 @@ namespace UnitTests
         }
 
         [Test]
-        public void SingleElementSequenceWitMatchingPredicate()
+        public void SingleElementSequenceWithMatchingPredicate()
         {
             int[] source = { 5 };
 
