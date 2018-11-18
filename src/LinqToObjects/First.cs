@@ -34,13 +34,6 @@ namespace LinqToObjects
                 throw new ArgumentNullException("predicate");
             }
 
-            var iterator = source.GetEnumerator();
-
-            if (!iterator.MoveNext())
-            {
-                throw new InvalidOperationException("source");
-            }
-
             foreach (TSource item in source)
             {
                 if (predicate(item))
