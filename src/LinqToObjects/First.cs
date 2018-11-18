@@ -12,14 +12,14 @@ namespace LinqToObjects
                 throw new ArgumentNullException("source");
             }
 
-            var iterator = source.GetEnumerator();
-
-            if (!iterator.MoveNext())
+            using (IEnumerator<TSource> iterator = source.GetEnumerator())
             {
-                throw new InvalidOperationException("source");
-            }
+                iterator.MoveNext();
 
-            return iterator.Current;
+                // This will throw InvalidOperationException if unavailable so no need
+                // to check explicitly.
+                return iterator.Current;
+            }
         }
 
         public static TSource First<TSource>(this IEnumerable<TSource> source, Func<TSource, bool> predicate)
