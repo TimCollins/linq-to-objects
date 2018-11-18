@@ -16,6 +16,7 @@
 - [First](#first) - The First method
 - [FirstOrDefault](#firstordefault) - The FirstOrDefault method
 - [Last](#Last) - The Last method
+- [LastOrDefault](#lastordefault) - The LastOrDefault method
 ___
 ### **Introduction**
 See [here](https://codeblog.jonskeet.uk/category/edulinq/) for source article.
@@ -268,4 +269,15 @@ Returns the last element of a sequence. The MSDN reference is [here](https://doc
 TSource Last<TSource> (this IEnumerable<TSource> source);
 // Returns the last element in a sequence that satisfies a specified condition.
 TSource Last<TSource> (this IEnumerable<TSource> source, Func<TSource,bool> predicate);
+```
+
+___
+### **LastOrDefault**
+Returns the last element of a sequence, or a default value if no element is found.
+ The MSDN reference is [here](https://docs.microsoft.com/en-us/dotnet/api/system.linq.enumerable.lastordefault). It has two overloads
+```csharp
+// Returns the last element of the sequence that satisfies a condition or a default value if no such element is found.
+TSource LastOrDefault<TSource> (this IEnumerable<TSource> source, Func<TSource,bool> predicate);
+// Returns the last element of a sequence, or a default value if the sequence contains no elements.
+TSource LastOrDefault<TSource> (this IEnumerable<TSource> source);
 ```
