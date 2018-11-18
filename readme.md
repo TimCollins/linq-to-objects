@@ -234,7 +234,7 @@ bool All<TSource> (this IEnumerable<TSource> source, Func<TSource,bool> predicat
 It uses immediate execution so the validation and implementation blocks don't have to be separated.
 
 ___
-### **All**
+### **First**
 Returns the first element of a sequence. The MSDN reference is [here](https://docs.microsoft.com/en-us/dotnet/api/system.linq.enumerable.first). It has two overloads
 ```csharp
 // Returns the first element of a sequence.
@@ -244,3 +244,16 @@ TSource First<TSource> (this IEnumerable<TSource> source, Func<TSource,bool> pre
 ```
 
 Enumerator.Current will throw an InvalidOperationException if unavailable (e.g. an empty sequence) so no need to check for it explicitly.
+
+___
+### **First or Default**
+Returns the first element of a sequence, or a default value if no element is found.
+ The MSDN reference is [here](https://docs.microsoft.com/en-us/dotnet/api/system.linq.enumerable.firstordefault). It has two overloads
+```csharp
+// Returns the first element of the sequence that satisfies a condition or a default value if no such element is found.
+TSource FirstOrDefault<TSource> (this IEnumerable<TSource> source, Func<TSource,bool> predicate);
+// Returns the first element of a sequence, or a default value if the sequence contains no elements.
+TSource FirstOrDefault<TSource> (this IEnumerable<TSource> source);
+```
+
+This works the same as First() except that instead of throwing an exception when a matching element is not found, the default value for the type is returned instead.
