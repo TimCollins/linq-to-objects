@@ -66,6 +66,7 @@
     <Compile Include="ConcatTests.cs" />
     <Compile Include="CountTests.cs" />
     <Compile Include="EmptyTests.cs" />
+    <Compile Include="FirstOrDefaultTests.cs" />
     <Compile Include="FirstTests.cs" />
     <Compile Include="RangeTests.cs" />
     <Compile Include="RepeatTests.cs" />
