@@ -13,6 +13,7 @@
 - [SelectMany](#selectmany) - The SelectMany method
 - [Any](#any) - The Any method
 - [All](#all) - The All method
+- [First](#first) - The First method
 ___
 ### **Introduction**
 See [here](https://codeblog.jonskeet.uk/category/edulinq/) for source article.
@@ -231,3 +232,15 @@ Determines whether all elements of a sequence satisfy a condition. The MSDN refe
 bool All<TSource> (this IEnumerable<TSource> source, Func<TSource,bool> predicate);
 ```
 It uses immediate execution so the validation and implementation blocks don't have to be separated.
+
+___
+### **All**
+Returns the first element of a sequence. The MSDN reference is [here](https://docs.microsoft.com/en-us/dotnet/api/system.linq.enumerable.first). It has two overloads
+```csharp
+// Returns the first element of a sequence.
+TSource First<TSource> (this IEnumerable<TSource> source);
+// Returns the first element in a sequence that satisfies a specified condition.
+TSource First<TSource> (this IEnumerable<TSource> source, Func<TSource,bool> predicate);
+```
+
+Enumerator.Current will throw an InvalidOperationException if unavailable (e.g. an empty sequence) so no need to check for it explicitly.
