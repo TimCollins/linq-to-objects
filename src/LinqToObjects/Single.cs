@@ -7,11 +7,53 @@ namespace LinqToObjects
     {
         public static TSource Single<TSource>(this IEnumerable<TSource> source, Func<TSource, bool> predicate)
         {
-            return default(TSource);
+            if (source == null)
+            {
+                throw new ArgumentNullException("source");
+            }
+
+            if (predicate == null)
+            {
+                throw new ArgumentNullException("predicate");
+            }
+
+            var iterator = source.GetEnumerator();
+
+            if (!iterator.MoveNext())
+            {
+                throw new InvalidOperationException("source");
+            }
+
+            if (predicate(iterator.Current))
+            {
+                return iterator.Current;
+            }
+
+            while (iterator.MoveNext())
+            {
+                if (predicate(iterator.Current))
+                {
+                    return iterator.Current;
+                }
+            }
+
+            throw new InvalidOperationException("source");
         }
 
         public static TSource Single<TSource>(this IEnumerable<TSource> source)
         {
+            if (source == null)
+            {
+                throw new ArgumentNullException("source");
+            }
+
+            var iterator = source.GetEnumerator();
+
+            if (!iterator.MoveNext())
+            {
+                throw new InvalidOperationException("source");  
+            }
+
             return default(TSource);
         }
     }
