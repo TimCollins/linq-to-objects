@@ -17,27 +17,29 @@ namespace LinqToObjects
                 throw new ArgumentNullException("predicate");
             }
 
-            var iterator = source.GetEnumerator();
+            var retVal = default(TSource);
+            var foundAny = false;
 
-            if (!iterator.MoveNext())
+            foreach (var item in source)
             {
-                throw new InvalidOperationException("source");
-            }
-
-            if (predicate(iterator.Current))
-            {
-                return iterator.Current;
-            }
-
-            while (iterator.MoveNext())
-            {
-                if (predicate(iterator.Current))
+                if (predicate(item))
                 {
-                    return iterator.Current;
+                    if (foundAny)
+                    {
+                        throw new InvalidOperationException("Sequence contained multiple matching elements.");
+                    }
+
+                    foundAny = true;
+                    retVal = item;
                 }
             }
 
-            throw new InvalidOperationException("source");
+            if (!foundAny)
+            {
+                throw new InvalidOperationException("No item found for predicate.");
+            }
+
+            return retVal;
         }
 
         public static TSource Single<TSource>(this IEnumerable<TSource> source)
@@ -47,14 +49,22 @@ namespace LinqToObjects
                 throw new ArgumentNullException("source");
             }
 
-            var iterator = source.GetEnumerator();
-
-            if (!iterator.MoveNext())
+            using (IEnumerator<TSource> iterator = source.GetEnumerator())
             {
-                throw new InvalidOperationException("source");  
-            }
+                if (!iterator.MoveNext())
+                {
+                    throw new InvalidOperationException("Sequence was empty.");
+                }
 
-            return default(TSource);
+                var retVal = iterator.Current;
+
+                if (iterator.MoveNext())
+                {
+                    throw new InvalidOperationException("Sequence contained multiple elements.");
+                }
+
+                return retVal;
+            }
         }
     }
 }
