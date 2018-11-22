@@ -53,6 +53,7 @@
     <Compile Include="Repeat.cs" />
     <Compile Include="Select.cs" />
     <Compile Include="SelectMany.cs" />
+    <Compile Include="Single.cs" />
     <Compile Include="Where.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
