@@ -102,7 +102,8 @@ namespace UnitTests
             int[] source = { 1, 2, 0 };
             var query = source.Select(x => 10 / x);
 
-            Assert.Throws<InvalidOperationException>(() => query.Single(x => true));
+            // This throws DivideByZeroException instead of InvalidOperationException
+            Assert.Throws<DivideByZeroException>(() => query.Single(x => true));
         }
     }
 }
