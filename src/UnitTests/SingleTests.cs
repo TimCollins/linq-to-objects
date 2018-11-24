@@ -1,6 +1,7 @@
-﻿using NUnit.Framework;
+﻿using LinqToObjects;
+using NUnit.Framework;
 using System;
-using System.Linq;
+//using System.Linq;
 
 namespace UnitTests
 {
@@ -102,8 +103,9 @@ namespace UnitTests
             int[] source = { 1, 2, 0 };
             var query = source.Select(x => 10 / x);
 
-            // This throws DivideByZeroException instead of InvalidOperationException
-            Assert.Throws<DivideByZeroException>(() => query.Single(x => true));
+            // This throws DivideByZeroException instead of InvalidOperationException 
+            // in the real implementation.
+            Assert.Throws<InvalidOperationException>(() => query.Single(x => true));
         }
     }
 }
