@@ -74,6 +74,7 @@
     <Compile Include="RepeatTests.cs" />
     <Compile Include="SelectManyTests.cs" />
     <Compile Include="SelectTests.cs" />
+    <Compile Include="SingleOrDefaultTests.cs" />
     <Compile Include="SingleTests.cs" />
     <Compile Include="TestExtensions.cs" />
     <Compile Include="TestSupport\GenericOnlyCollection.cs" />
