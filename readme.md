@@ -17,6 +17,7 @@
 - [FirstOrDefault](#firstordefault) - The FirstOrDefault method
 - [Last](#Last) - The Last method
 - [LastOrDefault](#lastordefault) - The LastOrDefault method
+- [Single](#Single) - The Single method
 ___
 ### **Introduction**
 See [here](https://codeblog.jonskeet.uk/category/edulinq/) for source article.
@@ -273,11 +274,20 @@ TSource Last<TSource> (this IEnumerable<TSource> source, Func<TSource,bool> pred
 
 ___
 ### **LastOrDefault**
-Returns the last element of a sequence, or a default value if no element is found.
- The MSDN reference is [here](https://docs.microsoft.com/en-us/dotnet/api/system.linq.enumerable.lastordefault). It has two overloads
+Returns the last element of a sequence, or a default value if no element is found. The MSDN reference is [here](https://docs.microsoft.com/en-us/dotnet/api/system.linq.enumerable.lastordefault). It has two overloads
 ```csharp
 // Returns the last element of the sequence that satisfies a condition or a default value if no such element is found.
 TSource LastOrDefault<TSource> (this IEnumerable<TSource> source, Func<TSource,bool> predicate);
 // Returns the last element of a sequence, or a default value if the sequence contains no elements.
 TSource LastOrDefault<TSource> (this IEnumerable<TSource> source);
+```
+___
+### **Single**
+Returns a single, specific element of a sequence. The MSDN reference is [here](https://docs.microsoft.com/en-us/dotnet/api/system.linq.enumerable.single).
+It has two overloads
+```csharp
+// Returns the only element of a sequence that satisfies a specified condition, and throws an exception if more than one such element exists.
+TSource Single<TSource>(this IEnumerable<TSource> source, Func<TSource, bool> predicate)
+Returns the only element of a sequence, and throws an exception if there is not exactly one element in the sequence.
+TSource Single<TSource>(this IEnumerable<TSource> source)
 ```
