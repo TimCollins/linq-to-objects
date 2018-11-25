@@ -1,5 +1,6 @@
 ﻿using System;
-using System.Linq;
+using LinqToObjects;
+//using System.Linq;
 using NUnit.Framework;
 
 namespace UnitTests
