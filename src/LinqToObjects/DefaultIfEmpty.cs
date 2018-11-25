@@ -22,16 +22,20 @@ namespace LinqToObjects
 
         private static IEnumerable<TSource> DefaultIfEmptyImpl<TSource>(IEnumerable<TSource> source, TSource defaultValue)
         {
-            var iterator = source.GetEnumerator();
-
-            if (!iterator.MoveNext())
+            using (var iterator = source.GetEnumerator())
             {
-                yield return defaultValue;
-            }
+                if (!iterator.MoveNext())
+                {
+                    yield return defaultValue;
+                    yield break;
+                }
 
-            while (iterator.MoveNext())
-            {
                 yield return iterator.Current;
+
+                while (iterator.MoveNext())
+                {
+                    yield return iterator.Current;
+                }
             }
         }
     }
