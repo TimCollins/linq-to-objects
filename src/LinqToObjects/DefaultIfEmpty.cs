@@ -12,7 +12,7 @@ namespace LinqToObjects
                 throw new ArgumentNullException("source");
             }
 
-            return null;
+            return DefaultIfEmptyImpl(source, default(TSource));
         }
 
         public static IEnumerable<TSource> DefaultIfEmpty<TSource>(this IEnumerable<TSource> source, TSource defaultValue)
@@ -27,7 +27,17 @@ namespace LinqToObjects
 
         private static IEnumerable<TSource> DefaultIfEmptyImpl<TSource>(IEnumerable<TSource> source, TSource defaultValue)
         {
-            yield return defaultValue;
+            var iterator = source.GetEnumerator();
+
+            if (!iterator.MoveNext())
+            {
+                yield return defaultValue;
+            }
+
+            while (iterator.MoveNext())
+            {
+                yield return iterator.Current;
+            }
         }
     }
 }
