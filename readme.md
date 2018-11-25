@@ -19,6 +19,7 @@
 - [LastOrDefault](#lastordefault) - The LastOrDefault method
 - [Single](#single) - The Single method
 - [SingleOrDefault](#singleordefault) - The SingleOrDefault method
+- [DefaultIfEmpty](#defaultifempty) - The DefaultIfEmpty method
 ___
 ### **Introduction**
 See [here](https://codeblog.jonskeet.uk/category/edulinq/) for source article.
@@ -292,4 +293,13 @@ Returns a single, specific element of a sequence, or a default value if that ele
 TSource SingleOrDefault<TSource>(this IEnumerable<TSource> source, Func<TSource, bool> predicate)
 // Returns the only element of a sequence, or a default value if the sequence is empty; this method throws an exception if there is more than one element in the sequence.
 TSource SingleOrDefault<TSource>(this IEnumerable<TSource> source)
+```
+___
+### **DefaultIfEmpty**
+Returns the elements of an IEnumerable<T>, or a default valued singleton collection if the sequence is empty. The MSDN reference is [here](https://docs.microsoft.com/en-us/dotnet/api/system.linq.enumerable.defaultifempty). It has two overloads
+```csharp
+// Returns the only element of a sequence that satisfies a specified condition or a default value if no such element exists; this method throws an exception if more than one element satisfies the condition.
+IEnumerable<TSource> DefaultIfEmpty<TSource>(this IEnumerable<TSource> source, TSource defaultValue)
+// Returns the only element of a sequence, or a default value if the sequence is empty; this method throws an exception if there is more than one element in the sequence.
+IEnumerable<TSource> DefaultIfEmpty<TSource>(this IEnumerable<TSource> source)
 ```
