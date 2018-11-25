@@ -34,12 +34,7 @@ namespace LinqToObjects
                 }
             }
 
-            if (!foundAny)
-            {
-                throw new InvalidOperationException("No item found for predicate.");
-            }
-
-            return retVal;
+            return foundAny ? retVal : default(TSource);
         }
 
         public static TSource SingleOrDefault<TSource>(this IEnumerable<TSource> source)
@@ -53,7 +48,7 @@ namespace LinqToObjects
             {
                 if (!iterator.MoveNext())
                 {
-                    throw new InvalidOperationException("Sequence was empty.");
+                    return default(TSource);
                 }
 
                 var retVal = iterator.Current;
