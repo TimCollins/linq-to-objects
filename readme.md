@@ -17,7 +17,8 @@
 - [FirstOrDefault](#firstordefault) - The FirstOrDefault method
 - [Last](#Last) - The Last method
 - [LastOrDefault](#lastordefault) - The LastOrDefault method
-- [Single](#Single) - The Single method
+- [Single](#single) - The Single method
+- [SingleOrDefault](#singleordefault) - The SingleOrDefault method
 ___
 ### **Introduction**
 See [here](https://codeblog.jonskeet.uk/category/edulinq/) for source article.
@@ -118,7 +119,6 @@ private static IEnumerable<TSource> WhereImpl<TSource>(this IEnumerable<TSource>
 	}
 }
 ```
-
 The version with the index is the same except there is an index variable defined outside the foreach() which is passed to the predicate and incremented at the end of each loop iteration.
 ```csharp
 	var numbers = Enumerable.Range(1, 10);
@@ -198,7 +198,6 @@ The MSDN reference is [here](https://docs.microsoft.com/en-us/dotnet/api/system.
 IEnumerable<TSource> Concat<TSource>(this IEnumerable<TSource> first, IEnumerable<TSource> second)
 ```
 The concatenation just returns all of the items in the first collection and then all of the items in the second one.
-
 ___
 ### **SelectMany**
 The article refers to this as the most important operator in the whole of LINQ. Most other operators that returns sequences can be implemented via SelectMany. The MSDN reference is [here](https://docs.microsoft.com/en-us/dotnet/api/system.linq.enumerable.selectmany). It has four overloads. The method signatures are:
@@ -216,7 +215,6 @@ SelectMany<TSource,TResult>(IEnumerable<TSource>, Func<TSource,Int32,IEnumerable
 In each case, a subsequence is generated from each element of the input sequence using a delegate which can optionally take a parameter with the index of the element within the original collection.
 
 Each element from each subsequence is returned directly or another delegate is applied which takes the original element in the input sequence and the element within the subsequence.
-
 ___
 ### **Any**
 Determines whether any element of a sequence exists or satisfies a condition. The MSDN reference is [here](https://docs.microsoft.com/en-us/dotnet/api/system.linq.enumerable.any). It has two overloads
@@ -227,7 +225,6 @@ bool Any<TSource> (this IEnumerable<TSource> source);
 bool Any<TSource> (this IEnumerable<TSource> source, Func<TSource,bool> predicate);
 ```
 It uses immediate execution so the validation and implementation blocks don't have to be separated.
-
 ___
 ### **All**
 Determines whether all elements of a sequence satisfy a condition. The MSDN reference is [here](https://docs.microsoft.com/en-us/dotnet/api/system.linq.enumerable.all). It has one overload
@@ -236,7 +233,6 @@ Determines whether all elements of a sequence satisfy a condition. The MSDN refe
 bool All<TSource> (this IEnumerable<TSource> source, Func<TSource,bool> predicate);
 ```
 It uses immediate execution so the validation and implementation blocks don't have to be separated.
-
 ___
 ### **First**
 Returns the first element of a sequence. The MSDN reference is [here](https://docs.microsoft.com/en-us/dotnet/api/system.linq.enumerable.first). It has two overloads
@@ -248,7 +244,6 @@ TSource First<TSource> (this IEnumerable<TSource> source, Func<TSource,bool> pre
 ```
 
 Enumerator.Current will throw an InvalidOperationException if unavailable (e.g. an empty sequence) so no need to check for it explicitly.
-
 ___
 ### **FirstOrDefault**
 Returns the first element of a sequence, or a default value if no element is found.
@@ -261,7 +256,6 @@ TSource FirstOrDefault<TSource> (this IEnumerable<TSource> source);
 ```
 
 This works the same as First() except that instead of throwing an exception when a matching element is not found, the default value for the type is returned instead.
-
 ___
 ### **Last**
 Returns the last element of a sequence. The MSDN reference is [here](https://docs.microsoft.com/en-us/dotnet/api/system.linq.enumerable.last). It has two overloads
@@ -271,7 +265,6 @@ TSource Last<TSource> (this IEnumerable<TSource> source);
 // Returns the last element in a sequence that satisfies a specified condition.
 TSource Last<TSource> (this IEnumerable<TSource> source, Func<TSource,bool> predicate);
 ```
-
 ___
 ### **LastOrDefault**
 Returns the last element of a sequence, or a default value if no element is found. The MSDN reference is [here](https://docs.microsoft.com/en-us/dotnet/api/system.linq.enumerable.lastordefault). It has two overloads
@@ -290,4 +283,13 @@ It has two overloads
 TSource Single<TSource>(this IEnumerable<TSource> source, Func<TSource, bool> predicate)
 Returns the only element of a sequence, and throws an exception if there is not exactly one element in the sequence.
 TSource Single<TSource>(this IEnumerable<TSource> source)
+```
+___
+### **SingleOrDefault**
+Returns a single, specific element of a sequence, or a default value if that element is not found. The MSDN reference is [here](https://docs.microsoft.com/en-us/dotnet/api/system.linq.enumerable.singleordefault). It has two overloads
+```csharp
+// Returns the only element of a sequence that satisfies a specified condition or a default value if no such element exists; this method throws an exception if more than one element satisfies the condition.
+TSource SingleOrDefault<TSource>(this IEnumerable<TSource> source, Func<TSource, bool> predicate)
+// Returns the only element of a sequence, or a default value if the sequence is empty; this method throws an exception if there is more than one element in the sequence.
+TSource SingleOrDefault<TSource>(this IEnumerable<TSource> source)
 ```
