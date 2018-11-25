@@ -53,7 +53,7 @@ namespace UnitTests
         {
             int[] source = { 5, 10 };
 
-            Assert.AreEqual(10, source.SingleOrDefault());
+            Assert.Throws<InvalidOperationException>(() => source.SingleOrDefault());
         }
 
         [Test]
