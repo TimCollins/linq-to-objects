@@ -119,8 +119,8 @@ namespace UnitTests
             int[] source = { 1, 2, 0 };
             var query = source.Select(n => 10 / n);
 
-            // Assert.Throws<InvalidOperationException>(() => query.SingleOrDefault(n => true));
-            Assert.Throws<DivideByZeroException>(() => query.SingleOrDefault(n => true));
+            Assert.Throws<InvalidOperationException>(() => query.SingleOrDefault(n => true));
+            //Assert.Throws<DivideByZeroException>(() => query.SingleOrDefault(n => true));
         }
     }
 }
