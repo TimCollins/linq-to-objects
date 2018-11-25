@@ -7,12 +7,7 @@ namespace LinqToObjects
     {
         public static IEnumerable<TSource> DefaultIfEmpty<TSource>(this IEnumerable<TSource> source)
         {
-            if (source == null)
-            {
-                throw new ArgumentNullException("source");
-            }
-
-            return DefaultIfEmptyImpl(source, default(TSource));
+            return DefaultIfEmpty(source, default(TSource));
         }
 
         public static IEnumerable<TSource> DefaultIfEmpty<TSource>(this IEnumerable<TSource> source, TSource defaultValue)
