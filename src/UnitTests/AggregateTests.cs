@@ -1,5 +1,6 @@
 ﻿using System;
-using System.Linq;
+using LinqToObjects;
+//using System.Linq;
 using NUnit.Framework;
 using UnitTests.TestSupport;
 
@@ -102,6 +103,5 @@ namespace UnitTests
 
             Assert.AreEqual(30, source.Aggregate((acc, value) => acc * value));
         }
-
     }
 }
