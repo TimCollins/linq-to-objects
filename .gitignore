@@ -197,3 +197,4 @@ FakesAssemblies/
 
 src/UnitTests/coverage
 src/UnitTests/results.xml
+docs/
