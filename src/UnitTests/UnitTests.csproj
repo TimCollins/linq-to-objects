@@ -80,6 +80,7 @@
     <Compile Include="SingleTests.cs" />
     <Compile Include="TestExtensions.cs" />
     <Compile Include="TestSupport\GenericOnlyCollection.cs" />
+    <Compile Include="TestSupport\Int32Extensions.cs" />
     <Compile Include="TestSupport\NonEnumerableList.cs" />
     <Compile Include="TestSupport\SemiGenericCollection.cs" />
     <Compile Include="ThrowingEnumerable.cs" />
