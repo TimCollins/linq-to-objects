@@ -46,6 +46,7 @@
     <Compile Include="Concat.cs" />
     <Compile Include="Count.cs" />
     <Compile Include="DefaultIfEmpty.cs" />
+    <Compile Include="Distinct.cs" />
     <Compile Include="Empty.cs" />
     <Compile Include="First.cs" />
     <Compile Include="FirstOrDefault.cs" />
