@@ -20,6 +20,7 @@
 - [Single](#single) - The Single method
 - [SingleOrDefault](#singleordefault) - The SingleOrDefault method
 - [DefaultIfEmpty](#defaultifempty) - The DefaultIfEmpty method
+- [Aggregate](#aggregate) - The Aggregate method
 ___
 ### **Introduction**
 See [here](https://codeblog.jonskeet.uk/category/edulinq/) for source article.
@@ -302,4 +303,16 @@ Returns the elements of an IEnumerable<T>, or a default valued singleton collect
 IEnumerable<TSource> DefaultIfEmpty<TSource>(this IEnumerable<TSource> source, TSource defaultValue)
 // Returns the only element of a sequence, or a default value if the sequence is empty; this method throws an exception if there is more than one element in the sequence.
 IEnumerable<TSource> DefaultIfEmpty<TSource>(this IEnumerable<TSource> source)
+```
+___
+### **Aggregate**
+Perform a calculation over a sequence of values. The MSDN reference is [here](https://docs.microsoft.com/en-us/dotnet/api/system.linq.enumerable.aggregate). It has three overloads
+```csharp
+// Applies an accumulator function over a sequence. The specified seed value is used as the initial accumulator value 
+// and the specified function is used to select the result value.
+TResult Aggregate<TSource,TAccumulate,TResult> (this IEnumerable<TSource> source, TAccumulate seed, Func<TAccumulate,TSource,TAccumulate> func, Func<TAccumulate,TResult> resultSelector)
+// Applies an accumulator function over a sequence. The specified seed value is used as the initial accumulator value.
+TAccumulate Aggregate<TSource,TAccumulate> (this IEnumerable<TSource> source, TAccumulate seed, Func<TAccumulate,TSource,TAccumulate> func)
+// Applies an accumulator function over a sequence.
+TSource Aggregate<TSource> (this IEnumerable<TSource> source, Func<TSource,TSource,TSource> func)
 ```
