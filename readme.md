@@ -21,6 +21,7 @@
 - [SingleOrDefault](#singleordefault) - The SingleOrDefault method
 - [DefaultIfEmpty](#defaultifempty) - The DefaultIfEmpty method
 - [Aggregate](#aggregate) - The Aggregate method
+- [Distinct](#distinct) - The Distinct method
 ___
 ### **Introduction**
 See [here](https://codeblog.jonskeet.uk/category/edulinq/) for source article.
@@ -315,4 +316,12 @@ TResult Aggregate<TSource,TAccumulate,TResult> (this IEnumerable<TSource> source
 TAccumulate Aggregate<TSource,TAccumulate> (this IEnumerable<TSource> source, TAccumulate seed, Func<TAccumulate,TSource,TAccumulate> func)
 // Applies an accumulator function over a sequence.
 TSource Aggregate<TSource> (this IEnumerable<TSource> source, Func<TSource,TSource,TSource> func)
+```
+___
+### **Distinct**
+Returns distinct elements from a sequence. The MSDN reference is [here](https://docs.microsoft.com/en-us/dotnet/api/system.linq.enumerable.distinct). It has two overloaded
+```csharp
+// Returns distinct elements from a sequence by using the default equality comparer to compare values.
+
+// Returns distinct elements from a sequence by using a specified IEqualityComparer<T> to compare values.
 ```
