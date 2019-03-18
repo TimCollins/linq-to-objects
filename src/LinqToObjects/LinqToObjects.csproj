@@ -58,6 +58,7 @@
     <Compile Include="SelectMany.cs" />
     <Compile Include="Single.cs" />
     <Compile Include="SingleOrDefault.cs" />
+    <Compile Include="Union.cs" />
     <Compile Include="Where.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
