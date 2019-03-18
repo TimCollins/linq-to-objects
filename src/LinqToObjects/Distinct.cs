@@ -5,25 +5,37 @@ namespace LinqToObjects
 {
     public static partial class Enumerable
     {
-        public static IEnumerable<TSource> Distinct<TSource>(this IEnumerable<TSource> source)        
+        public static IEnumerable<TSource> Distinct<TSource>(this IEnumerable<TSource> source)
         {
             if (source == null)
             {
                 throw new ArgumentNullException("source");
             }
 
-            return null;
+            return DistinctImpl(source, null);
         }
 
-        // IEqualityComparer<TSource>
-        public static IEnumerable<TSource> Distinct<TSource>(this IEnumerable<TSource> source, StringComparer comparer)
+        public static IEnumerable<TSource> Distinct<TSource>(this IEnumerable<TSource> source, IEqualityComparer<TSource> comparer)
         {
             if (source == null)
             {
                 throw new ArgumentNullException("source");
             }
 
-            return null;
+            return DistinctImpl(source, comparer);
+        }
+
+        private static IEnumerable<TSource> DistinctImpl<TSource>(IEnumerable<TSource> source, IEqualityComparer<TSource> comparer)
+        {
+            var seenElements = new HashSet<TSource>(comparer);
+
+            foreach (var item in source)
+            {
+                if (seenElements.Add(item))
+                {
+                    yield return item;
+                }
+            }
         }
     }
 }
