@@ -85,6 +85,7 @@
     <Compile Include="TestSupport\NonEnumerableList.cs" />
     <Compile Include="TestSupport\SemiGenericCollection.cs" />
     <Compile Include="ThrowingEnumerable.cs" />
+    <Compile Include="UnionTests.cs" />
     <Compile Include="WhereTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
