@@ -22,6 +22,7 @@
 - [DefaultIfEmpty](#defaultifempty) - The DefaultIfEmpty method
 - [Aggregate](#aggregate) - The Aggregate method
 - [Distinct](#distinct) - The Distinct method
+- [Union](#union) - The Union method
 ___
 ### **Introduction**
 See [here](https://codeblog.jonskeet.uk/category/edulinq/) for source article.
@@ -319,9 +320,22 @@ TSource Aggregate<TSource> (this IEnumerable<TSource> source, Func<TSource,TSour
 ```
 ___
 ### **Distinct**
-Returns distinct elements from a sequence. The MSDN reference is [here](https://docs.microsoft.com/en-us/dotnet/api/system.linq.enumerable.distinct). It has two overloaded
+Returns distinct elements from a sequence. The MSDN reference is [here](https://docs.microsoft.com/en-us/dotnet/api/system.linq.enumerable.distinct). It has two overloads:
 ```csharp
 // Returns distinct elements from a sequence by using the default equality comparer to compare values.
+IEnumerable<TSource> Distinct<TSource>(this IEnumerable<TSource> source) 
 
 // Returns distinct elements from a sequence by using a specified IEqualityComparer<T> to compare values.
+IEnumerable<TSource> Distinct<TSource>(this IEnumerable<TSource> source, IEqualityComparer<TSource> comparer)
+```
+___
+### **Union**
+Takes two input sequences and returns all elements that are in either. The MSDN reference is [here](http://msdn.microsoft.com/en-us/library/system.linq.enumerable.union.aspx). It has two overloads:
+
+```csharp
+// Produces the set union of two sequences by using the default equality comparer.
+IEnumerable<TSource> Union<TSource>(this IEnumerable<TSource> first, IEnumerable<TSource> second)
+// Produces the set union of two sequences by using a specified IEqualityComparer<T>
+IEnumerable<TSource> Union<TSource>(this IEnumerable<TSource> first, IEnumerable<TSource> second, IEqualityComparer<TSource> comparer)
+
 ```
